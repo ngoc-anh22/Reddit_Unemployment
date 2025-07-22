@@ -19,7 +19,7 @@ print(PASSWORD)
 
 # Khởi tạo đối tượng reddit (kết nối với API)
 # User-Agent giúp Reddit nhận diện ứng dụng của bạn và tránh bị chặn.
-USER_AGENT = "Unemployment_Data_Pipeline_by_Dazzling-Shame6194_v1.0"
+USER_AGENT = "Unemployment_Data_Pipeline_by_Dazzling-Shame6194_v2.0"
 
 # Danh sách các subreddit mục tiêu đã tinh chỉnh
 SUBREDDITS = ["cscareerquestions", "techjobs", "ITCareerQuestions", "unemployment", "jobs"]
@@ -76,7 +76,7 @@ def extraction():
         query_string = " OR ".join(UNEMPLOYMENT_KEYWORDS)
 
         try:
-            for submission in subreddit.search(query=query_string, limit = 100, sort="new", time_filter="all"):
+            for submission in subreddit.search(query=query_string, limit = 50, sort="new", time_filter="all"):
                 post_content = (submission.title + " " + submission.selftext).lower()
                 if any(tech_kw.lower() in post_content for tech_kw in TECH_KEYWORDS):
                     post_data = {
@@ -94,12 +94,12 @@ def extraction():
                     #print(f"  - Đã thu thập: {submission.title[:70]}... (từ r/{submission.subreddit.display_name})")
                 else:
                     pass
-            time.sleep(2)
+            time.sleep(15)
 
         except praw.exceptions.RedditAPIException as e:
             print(f"Lỗi API khi tìm kiếm trong r/{subreddit_name}: {e}")
-            print("Đang chờ 5 giây trước khi tiếp tục...")
-            time.sleep(5)
+            print("Đang chờ 10 giây trước khi tiếp tục...")
+            time.sleep(20)
         except Exception as e:
             print(f"Lỗi không xác định khi tìm kiếm trong r/{subreddit_name}: {e}")
 
