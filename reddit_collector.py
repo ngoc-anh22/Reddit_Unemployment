@@ -19,7 +19,7 @@ print(PASSWORD)
 
 # Khởi tạo đối tượng reddit (kết nối với API)
 # User-Agent giúp Reddit nhận diện ứng dụng của bạn và tránh bị chặn.
-USER_AGENT = "Unemployment_Data_Pipeline_by_Dazzling-Shame6194_v2.0"
+USER_AGENT = "Unemployment_Data_Pipeline_by_Dazzling-Shame6194_v1.0"
 
 # Danh sách các subreddit mục tiêu đã tinh chỉnh
 SUBREDDITS = ["cscareerquestions", "techjobs", "ITCareerQuestions", "unemployment", "jobs"]
